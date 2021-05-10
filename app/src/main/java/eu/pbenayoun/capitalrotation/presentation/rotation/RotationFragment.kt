@@ -9,10 +9,11 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import eu.pbenayoun.capitalrotation.R
 import eu.pbenayoun.capitalrotation.databinding.FragmentHomeBinding
+import eu.pbenayoun.capitalrotation.databinding.FragmentRotationBinding
 
 class RotationFragment() : Fragment(R.layout.fragment_rotation) {
 
-    private var _binding: FragmentHomeBinding? =null
+    private var _binding: FragmentRotationBinding? =null
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
@@ -22,7 +23,7 @@ class RotationFragment() : Fragment(R.layout.fragment_rotation) {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentHomeBinding.inflate(inflater, container, false)
+        _binding = FragmentRotationBinding.inflate(inflater, container, false)
         val view = binding.root
         setViews()
         return view
