@@ -11,7 +11,7 @@ You can change rotation after displaying image by tap on device "Back" button
 
 
 ## Download
-Apk is available here
+Apk is available [here](https://github.com/BenayounP/CapitalRotation/releases/download/1.0/app-release.apk)
 
 ## Functionality
 * This app is available in english and french
