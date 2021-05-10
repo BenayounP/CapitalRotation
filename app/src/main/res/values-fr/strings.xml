@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">CapitalRotation</string>
+
+    <!-- CAPITAL CHECK -->
+    <string name="home_check_capital_title">TEST DU TEXTE</string>
+    <string name="home_check_capital_hint">Texte commençant par une capitale</string>
+    <string name="home_button_check">Vérifier</string>
+    <string name="home_capital_snack_text_id">Le texte ne doit pas être vide et doit commencer par une capitale</string>
+
+    <!-- ROTATION -->
+    <string name="home_rotation_title">PIVOTER L\'IMAGE</string>
+    <string name="home_rotation_hint">Rotation entre 0 et 360</string>
+    <string name="home_button_rotate">Pivoter</string>
+    <string name="home_rotation_snack_text_id">Veuillez entrer une valeur entre 0 et 360\nAttention pas de virgule mais un point !</string>
+</resources>

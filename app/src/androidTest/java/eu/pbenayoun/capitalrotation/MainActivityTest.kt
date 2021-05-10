@@ -20,7 +20,7 @@ import org.junit.Rule
  * See [testing documentation](http://d.android.com/tools/testing).
  */
 @RunWith(AndroidJUnit4::class)
-class MainActivityInstrumentedTest {
+class MainActivityTest {
 
     val homeEditTextId = R.id.home_edit_search
     val homeButtonId = R.id.home_button

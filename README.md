@@ -6,6 +6,9 @@ A simple app that just do two things:
 - check that a string begin with a capital letter
 - rotate an image at desired angle
 
+## Tip
+you can change rotation after displaying image by tap on device "Back" button
+
 ## Download
 Apk is available here
 
@@ -14,8 +17,12 @@ Apk is available here
 - In order to be accessible to a maximum of users/devices this application is compatible up to android 4.1.1 (API 16)
 
 ## Tests
-- Tests available here
-= Manually testes on Android 4.1.1 emulator and real Pixel3a
+App was tested on Android 4.1.1 emulator(english) and real Pixel3a(french)
+
+Tests available here
+- [Unit tests](/app/src/test/java/eu/pbenayoun/capitalrotation/HomeUtilsTest.kt)
+- [Instrumented Tests](/app/src/androidTest/java/eu/pbenayoun/capitalrotation/MainActivityTest.kt)
+
 
 ## Contributing
 if you want to help in any way, just send me an [email](mailto:pierre<àcabnum.fr)

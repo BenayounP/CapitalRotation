@@ -3,13 +3,13 @@
 
     <!-- CAPITAL CHECK -->
     <string name="home_check_capital_title">CHECK TEXT</string>
-    <string name="home_check_capital_hint">Enter text beginning with capital letter</string>
+    <string name="home_check_capital_hint">Text beginning with a capital letter</string>
     <string name="home_button_check">check</string>
     <string name="home_capital_snack_text_id">The text should not be empty and begin with capital letter</string>
 
     <!-- ROTATION -->
     <string name="home_rotation_title">ROTATE IMAGE</string>
-    <string name="home_rotation_hint">Enter rotation value between 0 and 360</string>
+    <string name="home_rotation_hint">Rotation value between 0 and 360</string>
     <string name="home_button_rotate">rotate</string>
     <string name="home_rotation_snack_text_id">Please enter a rotation number between 0 and 360</string>
 </resources>
