@@ -1,6 +1,5 @@
 package eu.pbenayoun.capitalrotation.presentation.home
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import eu.pbenayoun.capitalrotation.R
 
@@ -39,7 +38,6 @@ class HomeViewModel : ViewModel() {
         return when(currentStep){
             Step.CAPITAL_LETTER_CHECK ->  checkCapitalQuery()
             Step.ROTATION_ANGLE_CHECK-> checkRotationAngle()
-            else -> CheckResponse(CheckResult.KO)
         }
     }
 

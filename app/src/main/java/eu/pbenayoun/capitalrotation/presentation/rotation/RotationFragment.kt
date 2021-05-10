@@ -8,11 +8,8 @@ import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
-import androidx.navigation.fragment.navArgs
 import eu.pbenayoun.capitalrotation.R
-import eu.pbenayoun.capitalrotation.databinding.FragmentHomeBinding
 import eu.pbenayoun.capitalrotation.databinding.FragmentRotationBinding
-import eu.pbenayoun.capitalrotation.presentation.home.HomeFragmentDirections
 
 class RotationFragment() : Fragment(R.layout.fragment_rotation) {
 
@@ -31,7 +28,6 @@ class RotationFragment() : Fragment(R.layout.fragment_rotation) {
 
         _binding = FragmentRotationBinding.inflate(inflater, container, false)
         val view = binding.root
-        Log.d("TMP_DEBUG", "arguments:${arguments}")
         rotationAngle=arguments?.getFloat("rotationAngle")?:-1f
         setViews(rotationAngle)
         return view
