@@ -2,6 +2,7 @@ package eu.pbenayoun.capitalrotation.presentation.home
 
 import android.content.Context
 import android.os.Bundle
+import android.text.InputType
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -37,7 +38,7 @@ class HomeFragment() : Fragment(R.layout.fragment_home) {
 
     override fun onResume() {
         super.onResume()
-        setTexts()
+        setViewsContent()
     }
 
     override fun onDestroyView() {
@@ -65,11 +66,12 @@ class HomeFragment() : Fragment(R.layout.fragment_home) {
         }
     }
 
-    private fun setTexts(){
+    private fun setViewsContent(){
         binding.homeTitle.text=getString(viewModel.stepTextIds.title)
         binding.homeEditSearch.setText(viewModel.currentQueryText)
         binding.homeEditSearch.hint=getString(viewModel.stepTextIds.editTextHint)
         binding.homeButton.text=getString(viewModel.stepTextIds.buttonText)
+        if (viewModel.currentStep==Step.ROTATION_ANGLE_CHECK) binding.homeEditSearch.setInputType(InputType.TYPE_CLASS_NUMBER or InputType.TYPE_NUMBER_FLAG_DECIMAL)
     }
 
     fun onTextValidation(){
@@ -89,7 +91,7 @@ class HomeFragment() : Fragment(R.layout.fragment_home) {
 
     fun setRotationStep(){
         viewModel.setStepRotation()
-        setTexts()
+        setViewsContent()
     }
 
     fun onFail(){
