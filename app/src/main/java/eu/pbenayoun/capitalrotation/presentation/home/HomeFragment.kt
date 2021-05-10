@@ -4,6 +4,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.widget.doAfterTextChanged
+import androidx.databinding.adapters.TextViewBindingAdapter.setText
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.google.android.material.snackbar.Snackbar
@@ -31,6 +33,11 @@ class HomeFragment() : Fragment(R.layout.fragment_home) {
         return view
     }
 
+    override fun onResume() {
+        super.onResume()
+        setTexts()
+    }
+
     override fun onDestroyView() {
         _binding = null
         super.onDestroyView()
@@ -40,9 +47,33 @@ class HomeFragment() : Fragment(R.layout.fragment_home) {
 
     }
 
+    private fun setTexts(){
+        binding.homeTitle.text=getString(viewModel.stepTextIds.title)
+        binding.homeEditSearch.setText(viewModel.currentQueryText)
+        binding.homeEditSearch.hint=getString(viewModel.stepTextIds.editTextHint)
+        binding.homeButton.text=getString(viewModel.stepTextIds.buttonText)
+    }
+
 
     private fun setViews() {
+        binding.homeEditSearch.doAfterTextChanged {
+            viewModel.setCurrentQuery(it.toString())
+        }
 
+        binding.homeButton.setOnClickListener { view ->
+            onButtonClick()
+        }
+    }
+
+    fun onButtonClick(){
+        when(viewModel.checkQuery()){
+             CheckResult.OK-> setTexts()
+            CheckResult.KO ->{
+                binding.homeEditSearch.setText(viewModel.currentQueryText)
+                snackIt(getString(viewModel.stepTextIds.snackText))
+            }
+
+        }
     }
 
 

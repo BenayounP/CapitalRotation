@@ -4,15 +4,46 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".presentation.MainActivity">
+    tools:context=".presentation.MainActivity"
+    android:layout_marginTop="@dimen/home_big_padding"
+    android:layout_marginLeft="@dimen/global_margin"
+    android:layout_marginRight="@dimen/global_margin"
+    android:layout_marginBottom="@dimen/global_margin">
 
     <TextView
+        android:id="@+id/home_title"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Home"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:text="@string/home_check_capital_title"
+        style="@style/Title"
+        />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/home_edit_search"
+        app:layout_constraintTop_toBottomOf="@id/home_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="@dimen/global_margin"
+        android:hint="@string/home_check_capital_hint"
+        android:imeOptions="actionDone"
+        android:inputType="text"
+        android:maxLines="1"
+        android:textAlignment="center"
+        />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/home_button"
+        app:layout_constraintTop_toBottomOf="@id/home_edit_search"
+        android:layout_marginTop="@dimen/global_margin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/home_big_padding"
+        android:layout_marginRight="@dimen/home_big_padding"
+        android:text="@string/home_button_check"
+        style="@style/AppButtonStyle"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

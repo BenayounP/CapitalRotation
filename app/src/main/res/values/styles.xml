@@ -7,17 +7,23 @@
         <item name="android:textAlignment" tools:targetApi="jelly_bean_mr1">center</item>
     </style>
 
+    <!-- BUTTON -->
+    <style name="AppButtonStyle" parent="Widget.MaterialComponents.Button">
+        <item name="android:textColor">@color/button_text_color</item>
+    </style>
+
     <!-- TEXTS -->
     <style name="AppTextView" parent="@style/Widget.MaterialComponents.TextView">
         <item name="android:textColor">@color/primary_text_color</item>
     </style>
 
-    <style name="movieTitle" parent="@style/AppTextView">
+    <style name="Title" parent="@style/AppTextView">
         <item name="android:textSize">@dimen/title_size</item>
+        <item name="android:textStyle">bold</item>
     </style>
 
-    <style name="movieReleaseDate" parent="@style/AppTextView">
-        <item name="android:textSize">@dimen/subtitle_size</item>
+    <style name="text" parent="@style/AppTextView">
+        <item name="android:textSize">@dimen/text_size</item>
     </style>
 
 

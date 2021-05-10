@@ -3,13 +3,11 @@
 
     <color name="colorPrimary">#EE0000</color>
     <color name="colorPrimaryVariant">#212533</color>
-    <color name="colorSecondary">#feed00</color>
-    <color name="colorSecondaryVariant">#FEA900</color>
-
-    <color name="default_background">#FFFFFF</color>
+    <color name="colorSecondary">#FEA900</color>
+    <color name="colorSecondaryVariant">#FE7300</color>
 
     <!-- elements color -->
 
-    <color name="primary_text_color">@color/colorPrimaryVariant</color>
-    <color name="secondary_text_color">@color/colorPrimaryVariant</color>
+    <color name="primary_text_color">#212533</color>
+    <color name="button_text_color">#FFFFFF</color>
 </resources>
