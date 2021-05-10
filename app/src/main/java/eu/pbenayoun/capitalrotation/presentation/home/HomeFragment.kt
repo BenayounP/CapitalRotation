@@ -17,6 +17,11 @@ import eu.pbenayoun.capitalrotation.R
 import eu.pbenayoun.capitalrotation.databinding.FragmentHomeBinding
 
 
+/** Home Fragment that displays Home page with the two form-field:
+ *  - one for Capital Field
+ *  - one for rotation angle
+ */
+
 class HomeFragment() : Fragment(R.layout.fragment_home) {
     private var _binding: FragmentHomeBinding? =null
     // This property is only valid between onCreateView and

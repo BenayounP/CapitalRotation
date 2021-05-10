@@ -11,6 +11,8 @@ import androidx.navigation.Navigation
 import eu.pbenayoun.capitalrotation.R
 import eu.pbenayoun.capitalrotation.databinding.FragmentRotationBinding
 
+
+// simple fragment to display rotated image
 class RotationFragment() : Fragment(R.layout.fragment_rotation) {
 
     private var _binding: FragmentRotationBinding? =null
@@ -28,6 +30,7 @@ class RotationFragment() : Fragment(R.layout.fragment_rotation) {
 
         _binding = FragmentRotationBinding.inflate(inflater, container, false)
         val view = binding.root
+        // we get here the angle given by other fragment
         rotationAngle=arguments?.getFloat("rotationAngle")?:-1f
         setViews(rotationAngle)
         return view

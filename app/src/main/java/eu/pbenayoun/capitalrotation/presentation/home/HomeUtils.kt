@@ -1,5 +1,10 @@
 package eu.pbenayoun.capitalrotation.presentation.home
 
+
+/** Utility class to check if :
+ *  - string begin with a capital
+ *  - string represents a angle between 0 and 360
+ */
 class HomeUtils() {
     fun checkCapitalLetterPrefix(string:String):Boolean{
         if (string.isNullOrEmpty()) return false
