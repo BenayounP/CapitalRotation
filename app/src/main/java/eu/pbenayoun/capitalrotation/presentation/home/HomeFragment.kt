@@ -1,11 +1,13 @@
 package eu.pbenayoun.capitalrotation.presentation.home
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.EditorInfo
+import android.view.inputmethod.InputMethodManager
 import androidx.core.widget.doAfterTextChanged
-import androidx.databinding.adapters.TextViewBindingAdapter.setText
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.google.android.material.snackbar.Snackbar
@@ -60,13 +62,24 @@ class HomeFragment() : Fragment(R.layout.fragment_home) {
             viewModel.setCurrentQuery(it.toString())
         }
 
+        binding.homeEditSearch.setOnEditorActionListener { v, actionId, event ->
+            if (actionId == EditorInfo.IME_ACTION_DONE) {
+               onTextValidation()
+                false
+            } else {
+                false
+            }
+        }
+
         binding.homeButton.setOnClickListener { view ->
-            onButtonClick()
+            onTextValidation()
         }
     }
 
-    fun onButtonClick(){
-        when(viewModel.checkQuery()){
+    fun onTextValidation(){
+        hideKeyboard()
+        val result = viewModel.checkQuery()
+        when(result){
              CheckResult.OK-> setTexts()
             CheckResult.KO ->{
                 binding.homeEditSearch.setText(viewModel.currentQueryText)
@@ -75,6 +88,12 @@ class HomeFragment() : Fragment(R.layout.fragment_home) {
 
         }
     }
+
+    private fun hideKeyboard(){
+        (binding.homeEditSearch.context.getSystemService(Context.INPUT_METHOD_SERVICE)
+                as InputMethodManager).hideSoftInputFromWindow(binding.homeEditSearch.windowToken, 0)
+    }
+
 
 
     private fun snackIt(snackText: String){

@@ -37,8 +37,8 @@ class HomeViewModel : ViewModel() {
 
     private fun checkCapitalQuery() : CheckResult{
         val checkResult = checkCapitalLetterPrefix(currentQueryText)
-        currentQueryText=""
         if (checkResult){
+            currentQueryText=""
             setStepRotation()
             return CheckResult.OK
         }

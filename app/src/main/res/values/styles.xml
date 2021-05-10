@@ -18,6 +18,7 @@
     </style>
 
     <style name="Title" parent="@style/AppTextView">
+        <item name="android:textColor">@color/colorPrimary</item>
         <item name="android:textSize">@dimen/title_size</item>
         <item name="android:textStyle">bold</item>
     </style>
