@@ -14,6 +14,8 @@ enum class CheckResult{
     KO
 }
 
+data class CheckResponse(val result: CheckResult, val rotationAngle:Float=-1f)
+
 data class TextsId(val title:Int, val editTextHint:Int, val buttonText: Int, val snackText: Int)
 
 
@@ -33,22 +35,21 @@ class HomeViewModel : ViewModel() {
         currentQueryText = newQuery
     }
 
-    fun checkQuery() : CheckResult{
-        Log.d("TMP_DEBUG", "check query: ${currentStep.name}")
+    fun checkQuery() : CheckResponse{
         return when(currentStep){
             Step.CAPITAL_LETTER_CHECK ->  checkCapitalQuery()
             Step.ROTATION_ANGLE_CHECK-> checkRotationAngle()
-            else -> CheckResult.KO
+            else -> CheckResponse(CheckResult.KO)
         }
     }
 
-    private fun checkCapitalQuery() : CheckResult{
+    private fun checkCapitalQuery() : CheckResponse{
         val checkResult = homeUtils.checkCapitalLetterPrefix(currentQueryText)
         if (checkResult){
             currentQueryText=""
-            return CheckResult.OK
+            return CheckResponse(CheckResult.OK)
         }
-        else return CheckResult.KO
+        else return CheckResponse(CheckResult.KO)
     }
 
 
@@ -58,11 +59,7 @@ class HomeViewModel : ViewModel() {
         stepTextIds=ROTATION_STEP_TEXTSID
     }
 
-    private fun checkRotationAngle() : CheckResult{
-        val test =  homeUtils.checkRotationAngle(currentQueryText)
-        return when (test){
-            true -> CheckResult.OK
-            false -> CheckResult.KO
-        }
+    private fun checkRotationAngle() : CheckResponse{
+        return  homeUtils.checkRotationAngle(currentQueryText)
     }
 }

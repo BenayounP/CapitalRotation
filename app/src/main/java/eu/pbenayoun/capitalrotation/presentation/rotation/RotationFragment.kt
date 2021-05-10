@@ -1,15 +1,18 @@
 package eu.pbenayoun.capitalrotation.presentation.rotation
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
+import androidx.navigation.fragment.navArgs
 import eu.pbenayoun.capitalrotation.R
 import eu.pbenayoun.capitalrotation.databinding.FragmentHomeBinding
 import eu.pbenayoun.capitalrotation.databinding.FragmentRotationBinding
+import eu.pbenayoun.capitalrotation.presentation.home.HomeFragmentDirections
 
 class RotationFragment() : Fragment(R.layout.fragment_rotation) {
 
@@ -18,14 +21,19 @@ class RotationFragment() : Fragment(R.layout.fragment_rotation) {
     // onDestroyView.
     private val binding get() = _binding!!
 
+    private var rotationAngle : Float = 0f
+    
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
         _binding = FragmentRotationBinding.inflate(inflater, container, false)
         val view = binding.root
-        setViews()
+        Log.d("TMP_DEBUG", "arguments:${arguments}")
+        rotationAngle=arguments?.getFloat("rotationAngle")?:-1f
+        setViews(rotationAngle)
         return view
     }
 
@@ -34,7 +42,11 @@ class RotationFragment() : Fragment(R.layout.fragment_rotation) {
         super.onDestroyView()
     }
 
-    private fun setViews() {
+    private fun setViews(rotationAngle: Float) {
+
+        if (rotationAngle>0){
+            binding.rotateImageview.rotation=rotationAngle
+        }
 
         // go back to previous fragment on BackPressed
         requireActivity()

@@ -1,9 +1,9 @@
 package eu.pbenayoun.capitalrotation
 
-import eu.pbenayoun.capitalrotation.presentation.home.HomeViewModel
 import org.junit.Test
-import com.google.common.truth.Truth.assertThat
 import com.google.common.truth.Truth.assertWithMessage
+import eu.pbenayoun.capitalrotation.presentation.home.CheckResult
+import eu.pbenayoun.capitalrotation.presentation.home.CheckResponse
 import eu.pbenayoun.capitalrotation.presentation.home.HomeUtils
 import org.junit.Before
 
@@ -47,15 +47,15 @@ class HomeUtilsTest {
         //nothing to do
 
         // Assert
-        assertWithMessage("check angle input: Empty").that(homeUtils.checkRotationAngle("")).isFalse()
-        assertWithMessage("check angle input: Punctuation").that(homeUtils.checkRotationAngle(".")).isFalse()
-        assertWithMessage("check angle input: text").that(homeUtils.checkRotationAngle("liverpool")).isFalse()
-        assertWithMessage("check angle input: bad number").that(homeUtils.checkRotationAngle("45,7")).isFalse()
-        assertWithMessage("check angle input: Number negative").that(homeUtils.checkRotationAngle("-1")).isFalse()
-        assertWithMessage("check angle input: Number above 360").that(homeUtils.checkRotationAngle("360.1")).isFalse()
-        assertWithMessage("check angle input: Number 0").that(homeUtils.checkRotationAngle("0")).isTrue()
-        assertWithMessage("check angle input: Number int in range").that(homeUtils.checkRotationAngle("45")).isTrue()
-        assertWithMessage("check angle input: Number float in range").that(homeUtils.checkRotationAngle("45.6")).isTrue()
-        assertWithMessage("check angle input: Number 360").that(homeUtils.checkRotationAngle("360")).isTrue()
+        assertWithMessage("check angle input: Empty").that(homeUtils.checkRotationAngle("")).isEqualTo(CheckResponse(CheckResult.KO))
+        assertWithMessage("check angle input: Punctuation").that(homeUtils.checkRotationAngle(".")).isEqualTo(CheckResponse(CheckResult.KO))
+        assertWithMessage("check angle input: text").that(homeUtils.checkRotationAngle("liverpool")).isEqualTo(CheckResponse(CheckResult.KO))
+        assertWithMessage("check angle input: bad number").that(homeUtils.checkRotationAngle("45,7")).isEqualTo(CheckResponse(CheckResult.KO))
+        assertWithMessage("check angle input: Number negative").that(homeUtils.checkRotationAngle("-1")).isEqualTo(CheckResponse(CheckResult.KO))
+        assertWithMessage("check angle input: Number above 360").that(homeUtils.checkRotationAngle("360.1")).isEqualTo(CheckResponse(CheckResult.KO))
+        assertWithMessage("check angle input: Number 0").that(homeUtils.checkRotationAngle("0")).isEqualTo(CheckResponse(CheckResult.OK,0f))
+        assertWithMessage("check angle input: Number int in range").that(homeUtils.checkRotationAngle("45")).isEqualTo(CheckResponse(CheckResult.OK,45f))
+        assertWithMessage("check angle input: Number float in range").that(homeUtils.checkRotationAngle("45.6")).isEqualTo(CheckResponse(CheckResult.OK,45.6f))
+        assertWithMessage("check angle input: Number 360").that(homeUtils.checkRotationAngle("360")).isEqualTo(CheckResponse(CheckResult.OK,360f))
     }
 }

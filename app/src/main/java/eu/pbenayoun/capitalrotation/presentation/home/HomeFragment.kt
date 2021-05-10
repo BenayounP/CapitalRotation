@@ -74,18 +74,16 @@ class HomeFragment() : Fragment(R.layout.fragment_home) {
 
     fun onTextValidation(){
         hideKeyboard()
-        val result = viewModel.checkQuery()
-        when(result){
-            CheckResult.OK-> onOkResult()
-            CheckResult.KO -> onKOResult()
-        }
+        val checkResponse = viewModel.checkQuery()
+        if (checkResponse.result==CheckResult.OK) onSuccess(checkResponse)
+        else onFail()
     }
 
 
-    fun onOkResult(){
+    fun onSuccess(checkResponse: CheckResponse){
         when(viewModel.currentStep){
             Step.CAPITAL_LETTER_CHECK -> setRotationStep()
-            Step.ROTATION_ANGLE_CHECK -> goToRotationFragment()
+            Step.ROTATION_ANGLE_CHECK -> goToRotationFragment(checkResponse.rotationAngle)
         }
     }
 
@@ -94,13 +92,14 @@ class HomeFragment() : Fragment(R.layout.fragment_home) {
         setTexts()
     }
 
-    fun onKOResult(){
+    fun onFail(){
         binding.homeEditSearch.setText(viewModel.currentQueryText)
         snackIt(getString(viewModel.stepTextIds.snackText))
     }
 
-    private fun goToRotationFragment(){
-        Navigation.findNavController(binding.root).navigate(R.id.action_home_to_rotation)
+    private fun goToRotationFragment(rotationAngle: Float){
+        val action = HomeFragmentDirections.actionHomeToRotation(rotationAngle)
+        Navigation.findNavController(binding.root).navigate(action)
     }
 
     private fun hideKeyboard(){

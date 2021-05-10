@@ -6,20 +6,20 @@ class HomeUtils() {
         return string[0].isLetter() && string[0].isUpperCase()
     }
 
-    fun checkRotationAngle(string:String):Boolean{
+    fun checkRotationAngle(string:String):CheckResponse{
         // check null or empty
-        if (string.isNullOrEmpty()) return false
+        if (string.isNullOrEmpty()) return CheckResponse(CheckResult.KO)
         // check string represents float
         var number=-1f
         try {
             number= string.toFloat()
         }
         catch (ex: NumberFormatException) {
-            return false
+            return CheckResponse(CheckResult.KO)
         }
         // check angle
         val isCorrectAngle = number in 0f..360f
-        return isCorrectAngle
+        if (isCorrectAngle) return CheckResponse(CheckResult.OK,number)
+        return CheckResponse(CheckResult.KO)
     }
-
 }
